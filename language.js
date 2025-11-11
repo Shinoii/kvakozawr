@@ -3,7 +3,6 @@
  * https://Get-Web.Site/
  * author: Vitalii P.
  *****************************************************/
-console.log("hi")
 const googleTranslateConfig = {
     /* Original language */
     lang: "en",
