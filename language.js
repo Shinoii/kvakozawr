@@ -6,14 +6,14 @@
 const googleTranslateConfig = {
     /* Original language */
     lang: "en",
-    /* The language we translate into on the first visit*/
     /* Язык, на который переводим при первом посещении */
     langFirstVisit: 'en',
-    /* Если скрипт не работает на поддомене, 
-    раскомментируйте и
-    укажите основной домен в свойстве domain */
     domain: "kvakozawrstudio.com"
 };
+
+document.querySelectorAll('.uc-notranslate').forEach(el => {
+    el.classList.add('notranslate');
+});
 
 function TranslateInit() {
 
