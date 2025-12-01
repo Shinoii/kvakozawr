@@ -77,32 +77,3 @@ function TranslateEventHandler(event, selector, handler) {
         if (el) handler(el);
     });
 }
-
-// Слова, которые запрещено переводить
-const translateExceptions = [
-    "Rigger"
-];
-
-// Функция, которая оборачивает слова в <span class="notranslate">
-function protectExceptions() {
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-
-    let node;
-    while (node = walker.nextNode()) {
-        let text = node.nodeValue;
-
-        translateExceptions.forEach(word => {
-            const regex = new RegExp(`\\b${word}\\b`, "gi");
-            if (regex.test(text)) {
-                const span = document.createElement("span");
-                span.innerHTML = text.replace(regex, match =>
-                    `<span class="notranslate">${match}</span>`
-                );
-                node.parentNode.replaceChild(span, node);
-            }
-        });
-    }
-}
-
-// Вызываем защиту слов ДО запуска переводчика
-protectExceptions();
